@@ -69,38 +69,111 @@ Assim, o Simulado Online se tornou uma ferramenta prática e personalizada, impu
 
 *   **ImgBB:** Serviço externo para upload e hospedagem de imagens.
 
+### Containerização e Orquestração
+
+*   **Docker:** Containerização da aplicação para desenvolvimento e produção.
+*   **Docker Compose:** Orquestração de múltiplos serviços (API e banco de dados).
+*   **PostgreSQL Alpine:** Imagem leve do PostgreSQL para o container do banco de dados.
+*   **Node.js Alpine:** Imagem leve do Node.js para o container da API.
+
 ---
 
 ## ⚙️ Configuração e Execução
 
-### Pré-requisitos
+A aplicação pode ser executada de **duas maneiras**: manualmente (instalando as dependências localmente) ou utilizando **Docker e Docker Compose** (recomendado para desenvolvimento).
 
+### 🐳 Opção 1: Execução com Docker (Recomendado)
+
+#### Pré-requisitos
+*   **Docker** e **Docker Compose** instalados no sistema
+*   Uma conta no ImgBB para obter uma API Key
+
+#### 1. Configuração das Variáveis de Ambiente
+
+Copie o arquivo `example.env` para `.env` e configure as variáveis:
+
+```bash
+cp example.env .env
+```
+
+Edite o arquivo `.env` com suas configurações:
+
+```
+# Database Configuration (para Docker)
+DB_HOST=db
+DB_USER=simulado_user
+DB_PASSWORD=simulado_password
+DB_NAME=simulado_db
+DB_PORT=5432
+DB_SCHEMA=app_simulado
+
+# API Configuration
+VITE_API_PORT=3000
+
+# External Services
+VITE_IMGBB_API_KEY=sua_api_key_do_imgbb
+
+# Security
+JWT_SECRET=sua_chave_secreta_muito_longa_e_aleatoria
+```
+
+#### 2. Execução com Docker Compose
+
+```bash
+# Inicia todos os serviços (API + Banco de dados)
+docker-compose up -d
+
+# Visualiza os logs em tempo real
+docker-compose logs -f
+
+# Para parar os serviços
+docker-compose down
+
+# Para parar e remover volumes (limpa o banco de dados)
+docker-compose down -v
+```
+
+A API estará disponível em `http://localhost:3000` e o banco de dados será inicializado automaticamente com o schema em `BancoSemDados.sql`.
+
+> **💡 Dica:** As configurações do banco de dados são carregadas automaticamente através do arquivo `.env` e do `docker-compose.yml`. O arquivo `BancoSemDados.sql` é executado automaticamente na primeira inicialização do container PostgreSQL através do volume mapeado para `/docker-entrypoint-initdb.d/init.sql`, criando todas as tabelas e dados iniciais necessários.
+
+> **Nota:** O frontend precisa ser executado separadamente. No diretório `frontend`, execute `npm install` e depois `npm run dev`.
+
+### 💻 Opção 2: Execução Manual
+
+#### Pré-requisitos
 *   Node.js (versão 20.x ou superior)
 *   npm (gerenciador de pacotes do Node.js)
 *   PostgreSQL (servidor de banco de dados)
-*   Uma conta no ImgBB para obter uma API Key.
+*   Uma conta no ImgBB para obter uma API Key
 
-### 1. Configuração do Banco de Dados
+#### 1. Configuração do Banco de Dados
 
-Crie um banco de dados PostgreSQL e execute os scripts SQL fornecidos na pasta `Banco*.sql` para configurar o esquema e popular com dados de exemplo.
+Crie um banco de dados PostgreSQL e execute os scripts SQL fornecidos no arquivo `BancoSemDados.sql` para configurar o esquema e popular com dados de exemplo.
 
-### 2. Variáveis de Ambiente
+#### 2. Variáveis de Ambiente
 
-Crie um arquivo `.env` na raiz do projeto (na mesma pasta de `package.json` principal) com as seguintes variáveis:
+Copie o arquivo `example.env` para `.env` na raiz do projeto:
 
-```
-DB_HOST=your_database_host
-DB_USER=your_database_user
-DB_PASSWORD=your_database_password
-DB_NAME=your_database_name
-DB_PORT=5432 # Ou a porta do seu PostgreSQL
-DB_SCHEMA=app_simulado # Ou o schema que você usou
-VITE_IMGBB_API_KEY=your_imgBB_API
-VITE_API_PORT=3000 # Porta para a API do backend
-JWT_SECRET=sua_chave_secreta_para_jwt # Uma string longa e aleatória
+```bash
+cp example.env .env
 ```
 
-### 3. Instalação das Dependências
+Configure as variáveis no arquivo `.env`:
+
+```
+DB_HOST=localhost  # ou seu host PostgreSQL
+DB_USER=seu_usuario_postgresql
+DB_PASSWORD=sua_senha_postgresql
+DB_NAME=seu_banco_de_dados
+DB_PORT=5432
+DB_SCHEMA=app_simulado
+VITE_IMGBB_API_KEY=sua_api_key_do_imgbb
+VITE_API_PORT=3000
+JWT_SECRET=sua_chave_secreta_muito_longa_e_aleatoria
+```
+
+#### 3. Instalação das Dependências
 
 No diretório raiz do projeto:
 
@@ -116,7 +189,7 @@ npm install
 cd ..
 ```
 
-### 4. Execução da Aplicação
+#### 4. Execução da Aplicação
 
 Para iniciar o backend (API):
 
