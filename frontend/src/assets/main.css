@@ -1,0 +1,11 @@
+/* Garante que o HTML e o BODY ocupem 100% da altura da tela */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* O elemento #app, que é onde o Vue monta sua aplicação, também deve ter 100% da altura */
+#app {
+  height: 100%;
+}
