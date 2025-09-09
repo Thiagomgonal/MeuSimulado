@@ -5,3 +5,6 @@ amplify_outputs*
 amplifyconfiguration*
 .env
 log.txt
+resposta.txt
+prompt.txt
+.gitignore
