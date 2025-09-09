@@ -17,6 +17,16 @@ Este projeto é uma **Plataforma de Simulado Online** robusta e interativa, dese
 
 ---
 
+## 💡 Inspiração e Motivação
+
+Este projeto nasceu de uma necessidade real no ambiente de trabalho. Durante a preparação para a prova **UiPath Certified Automation Developer Professional**, foi-nos fornecido um material de estudo em formato PDF. Percebendo que já teríamos acesso ao gabarito, surgiu a ideia de ir além: por que não transformar esse material estático em uma ferramenta interativa de aprendizado?
+
+Minha motivação inicial era criar uma plataforma web para me testar e, ao mesmo tempo, auxiliar meus colegas. Comecei a cadastrar as questões do PDF na aplicação, e rapidamente a ideia evoluiu. A funcionalidade de cadastro de questões foi adaptada para atender a uma demanda ainda mais valiosa: a capacidade de **visualizar o desempenho em tópicos específicos do edital da prova**. Isso nos permitiria identificar onde estávamos indo melhor e onde precisávamos de mais atenção, possibilitando a geração de simulados filtrados por tema para focar nos pontos fracos e otimizar nossos estudos.
+
+Assim, o Simulado Online se tornou uma ferramenta prática e personalizada, impulsionada pela busca por um aprendizado mais eficiente e direcionado.
+
+---
+
 ## 🚀 Funcionalidades Principais
 
 *   **Autenticação Segura:** Cadastro e login de usuários com senhas criptografadas (`bcryptjs`) e autenticação baseada em `JWT` (JSON Web Tokens).
