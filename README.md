@@ -130,10 +130,6 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues para bugs
 
 ---
 
-## 📄 Licença
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
----
-
-**Desenvolvido com ❤️ por [Seu Nome/Sua Organização]**
+**Desenvolvido com ❤️ por Thiago Monteiro**
