@@ -62,7 +62,7 @@ const form = ref({
 
 const message = ref(null);
 const imageFiles = ref([]);
-const IMGBB_API_KEY = "d915a5e939e936768f7bc91c4f3b6b91";
+const IMGBB_API_KEY = import.meta.env.VITE_IMGBB_API_KEY;;
 
 const addImageField = () => {
     imageFiles.value.push(null);
