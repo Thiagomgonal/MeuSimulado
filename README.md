@@ -95,6 +95,7 @@ DB_PASSWORD=your_database_password
 DB_NAME=your_database_name
 DB_PORT=5432 # Ou a porta do seu PostgreSQL
 DB_SCHEMA=app_simulado # Ou o schema que você usou
+VITE_IMGBB_API_KEY=your_imgBB_API
 VITE_API_PORT=3000 # Porta para a API do backend
 JWT_SECRET=sua_chave_secreta_para_jwt # Uma string longa e aleatória
 ```
